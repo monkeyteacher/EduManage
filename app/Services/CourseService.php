@@ -24,4 +24,20 @@ class CourseService
     {
         return $this->CourseRepository->storeCourse($courseData);
     }
+
+    public function updateCoursesData($courseData, $courseID)
+    {
+        $res = null;
+        $course = $this->CourseRepository->getCourseDatabyID($courseID);
+        if ($course) {
+            $courseData = $this->CourseRepository->updateCourse($courseData, $courseID);
+            $res['status'] = 'success';
+            $res['data'] = $this->CourseRepository->getCourseDatabyID($courseID);
+            return $res;
+        } else {
+            $res['status'] = 'error';
+            $res['message'] = '課程不存在。';
+            return $res;
+        }
+    }
 }

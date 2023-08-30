@@ -57,4 +57,34 @@ class CourseController extends Controller
             200
         );
     }
+
+    public function update(CourseRequest $request, $courseID)
+    {
+        $courseData = array(
+            'courseName' => $request->input('courseName'),
+            'introduction' => $request->input('introduction'),
+            'courseTime' => $request->input('courseTime'),
+            'lecturerID' => $request->input('lecturerID')
+        );
+        $result = $this->CourseService->updateCoursesData($courseData, $courseID);
+        if ($result['status'] == 'success') {
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'message' => null,
+                    'data' => $result['data']
+                ],
+                200
+            );
+        } else {
+            return response()->json(
+                [
+                    'status' => 'error',
+                    'message' => $result['message'],
+                    'data' => null
+                ],
+                400
+            );
+        }
+    }
 }

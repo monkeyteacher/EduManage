@@ -16,8 +16,18 @@ class CourseRepository
         return Course::where('lecturerID', $lecturerID)->get();
     }
 
+    public function getCourseDatabyID($courseID)
+    {
+        return Course::find($courseID);
+    }
+
     public function storeCourse($courseData)
     {
         return Course::create($courseData);
+    }
+
+    public function updateCourse($courseData, $courseID)
+    {
+        return Course::find($courseID)->update($courseData);
     }
 }
