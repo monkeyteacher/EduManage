@@ -15,4 +15,9 @@ class CourseRepository
     {
         return Course::where('lecturerID', $lecturerID)->get();
     }
+
+    public function storeCourse($courseData)
+    {
+        return Course::create($courseData);
+    }
 }

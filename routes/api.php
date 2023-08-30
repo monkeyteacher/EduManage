@@ -17,6 +17,7 @@ use App\Http\Controllers\UserController;
 
 Route::prefix('course')->group(function () {
     Route::get('/', [CourseController::class, 'list']);
+    Route::post('/', [CourseController::class, 'create']);
 });
 
 Route::prefix('lecturer')->group(function () {

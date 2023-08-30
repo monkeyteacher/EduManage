@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\CourseService;
 use App\Http\Requests\LecturerCoursesRequest;
+use App\Http\Requests\CourseRequest;
 
 class CourseController extends Controller
 {
@@ -36,5 +37,24 @@ class CourseController extends Controller
                 200
             );
         }
+    }
+
+    public function create(CourseRequest $request)
+    {
+        $courseData = array(
+            'courseName' => $request->input('courseName'),
+            'introduction' => $request->input('introduction'),
+            'courseTime' => $request->input('courseTime'),
+            'lecturerID' => $request->input('lecturerID')
+        );
+        $courseData = $this->CourseService->storeCoursesData($courseData);
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => null,
+                'data' => $courseData
+            ],
+            200
+        );
     }
 }

@@ -19,4 +19,9 @@ class CourseService
             return $this->CourseRepository->getCourseDataBylecturerID($lecturerID);
         }
     }
+
+    public function storeCoursesData($courseData)
+    {
+        return $this->CourseRepository->storeCourse($courseData);
+    }
 }
