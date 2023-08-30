@@ -10,4 +10,9 @@ class CourseRepository
     {
         return Course::All();
     }
+
+    public function getCourseDataBylecturerID($lecturerID)
+    {
+        return Course::where('lecturerID', $lecturerID)->get();
+    }
 }

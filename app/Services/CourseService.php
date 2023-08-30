@@ -11,8 +11,12 @@ class CourseService
     ) {
     }
 
-    public function getCoursesData()
+    public function getCoursesData($lecturerID = null)
     {
-        return $this->CourseRepository->getAllCourseData();
+        if (is_null($lecturerID)) {
+            return $this->CourseRepository->getAllCourseData();
+        } else {
+            return $this->CourseRepository->getCourseDataBylecturerID($lecturerID);
+        }
     }
 }
