@@ -10,4 +10,9 @@ class UserRepository
     {
         return User::where('type', 'T')->get();
     }
+
+    public function storeUser($userData)
+    {
+        return User::create($userData);
+    }
 }

@@ -21,4 +21,5 @@ Route::prefix('course')->group(function () {
 
 Route::prefix('lecturer')->group(function () {
     Route::get('/', [UserController::class, 'listLecturer']);
+    Route::post('/', [UserController::class, 'createLecturer']);
 });
