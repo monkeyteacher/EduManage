@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,8 @@ use App\Http\Controllers\CourseController;
 
 Route::prefix('course')->group(function () {
     Route::get('/', [CourseController::class, 'list']);
+});
+
+Route::prefix('lecturer')->group(function () {
+    Route::get('/', [UserController::class, 'listLecturer']);
 });
