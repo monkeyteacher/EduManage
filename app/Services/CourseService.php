@@ -40,4 +40,24 @@ class CourseService
             return $res;
         }
     }
+
+    public function deleteCourseData($courseID)
+    {
+        $res = null;
+        $course = $this->CourseRepository->getCourseDatabyID($courseID);
+        if ($course) {
+            $result = $this->CourseRepository->deleteCourse($courseID);
+            if ($result) {
+                $res['status'] = 'success';
+            } else {
+                $res['status'] = 'error';
+                $res['message'] = '刪除失敗。';
+            }
+            return $res;
+        } else {
+            $res['status'] = 'error';
+            $res['message'] = '課程不存在。';
+            return $res;
+        }
+    }
 }

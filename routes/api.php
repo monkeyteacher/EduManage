@@ -19,6 +19,7 @@ Route::prefix('course')->group(function () {
     Route::get('/', [CourseController::class, 'list']);
     Route::post('/', [CourseController::class, 'create']);
     Route::put('{courseID}', [CourseController::class, 'update']);
+    Route::delete('{courseID}', [CourseController::class, 'delete']);
 });
 
 Route::prefix('lecturer')->group(function () {

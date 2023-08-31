@@ -30,4 +30,9 @@ class CourseRepository
     {
         return Course::find($courseID)->update($courseData);
     }
+
+    public function deleteCourse($courseID)
+    {
+        return Course::find($courseID)->delete();
+    }
 }

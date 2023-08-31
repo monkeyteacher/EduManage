@@ -87,4 +87,28 @@ class CourseController extends Controller
             );
         }
     }
+
+    public function delete($courseID)
+    {
+        $result = $this->CourseService->deleteCourseData($courseID);
+        if ($result['status'] == 'success') {
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'message' => null,
+                    'data' => null,
+                ],
+                200
+            );
+        } else {
+            return response()->json(
+                [
+                    'status' => 'error',
+                    'message' => $result['message'],
+                    'data' => null
+                ],
+                400
+            );
+        }
+    }
 }
